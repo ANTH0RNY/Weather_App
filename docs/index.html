@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <script src="./main.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <script src="./main.js" defer></script>
 </head>
+
 <body>
-    <div class="container">
-  <form>
-<input type="text" class="form-input">
-      <button class="form-btn">
+  <div class="container">
+    <div class="left">
+      <form class="form">
+        <input type="text" class="form-input">
+        <button class="form-btn">
           Search
         </button>
-  </form>
-      <div class="json"></div>
+      </form>
+      <div class="location">
+        <p class="name not-visible location-item">
+
+        </p>
+        <p class="region not-visible location-item"></p>
+        <p class="country not-visible location-item">
+        </p>
+        <!-- <p class="lat-lon"> -->
+          <span class="lat not-visible location-item"></span>
+          <span class="lon not-visible location-item"></span>
+        <!-- </p> -->
+        <p class="localTime not-visible location-item" location-item></p>
+      </div>
     </div>
+    <div class="right">
+
+    </div>
+    <!-- <div class="json"></div> -->
+  </div>
 </body>
+
 </html>
