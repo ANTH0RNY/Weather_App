@@ -6,6 +6,11 @@ body {
   box-sizing: content-box;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
+  background-image: url(../img/city.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
 }
 .not-visible{
   display: none !important;
@@ -14,7 +19,7 @@ body {
 .container {
   display: flex;
   height: 100vh;
-  
+
   .left {
     flex: 1;
     padding: 2rem 1rem;
@@ -46,11 +51,15 @@ body {
     .location{
       display: flex;
       flex-direction: column;
-      
+      // justify-content: center;
       padding: 1rem 0;
       .location-item{
-        border: solid 1px black;
-        margin: 0;
+        color: white;
+        // text-align: center;
+        // font-size: large;
+        font-size: 1.2rem;
+        font-weight: bold;
+
       }
     }
 

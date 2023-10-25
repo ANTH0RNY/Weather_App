@@ -1,3 +1,5 @@
+import createLocation from "./components/location";
+import itemScale from "./components/temp.js";
 import "./sass/main.scss";
 console.log("Hello world");
 
@@ -11,51 +13,36 @@ function createForecastUrl(location, day = 1) {
 async function sendBasicRequest(url) {
   const response = await fetch(url);
   const json = await response.json();
-  //  console.log(json);
   return json;
 }
 
-// sendBasicRequest(createForecastUrl("kisumu"));
 const btn = document.querySelector(".form-btn");
 const input = document.querySelector(".form-input");
-// const dump = document.querySelector(".json");
+const location = document.querySelector(".location");
+const current = document.querySelector(".current");
+
 btn.addEventListener("click", (e) => {
   e.preventDefault();
   if (input.value) {
     sendBasicRequest(createForecastUrl(input.value)).then((val) => {
-      // dump.innerText = JSON.stringify(val, null, 2);
       if (!val.error) {
-        // console.log("hello");
         console.log(JSON.stringify(val, null, 2));
-        fillLocation(val.location);
-
+        createLocation(location, val.location);
+        const temps = [
+          {
+            value: val.current.temp_c,
+            unit: `<span class="unit">C</span><span>&#176;</span>`,
+          },
+          {
+            value: val.current.temp_f,
+            unit: `<span class="unit">F</span><span>&#176;</span>`,
+          },
+        ];
+        const tempScale = itemScale(temps);
+        current.appendChild(tempScale);
       }
     });
     input.value = "";
     input.focus();
   }
 });
-
-function fillLocation(location) {
-  const name = document.querySelector(".name");
-  innerText(name, location.name);
-  const region = document.querySelector(".region");
-  innerText(region, location.region);
-  const country = document.querySelector(".country");
-  innerText(country, location.country);
-  const lat = document.querySelector(".lat");
-  innerText(lat, location.lat);
-  const lon = document.querySelector(".lon");
-  innerText(lon, location.lon);
-  const localTime = document.querySelector(".localTime");
-  innerText(localTime, location.localtime);
-}
-
-function innerText(el, val = "") {
-  if (val.length !== 0) {
-    el.classList.remove("not-visible");
-    el.innerText = val;
-  } else {
-    el.classList.add("not-visible");
-  }
-}
