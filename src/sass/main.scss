@@ -23,11 +23,19 @@ body {
   .left {
     flex: 1;
     padding: 2rem 1rem;
-    // background-color: pink;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
+
+    .location{
+      .localtime{
+        overflow: scroll;
+        &::-webkit-scrollbar{
+          display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
 
     .form {
       display: flex;

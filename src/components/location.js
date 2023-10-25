@@ -2,6 +2,7 @@
 import { getElement, createSetElement, createSafeElement } from "../util";
 
 function createLocation(el, location) {
+  el.innerHTML = "";
   const included = ["name", "region", "country", "lat", "lon", "localtime"];
   for (const [key, val] of Object.entries(location)) {
     if (included.includes(key)) {
@@ -14,7 +15,7 @@ function createLocation(el, location) {
       const item = createSafeElement(
         "p",
         { class: `location-item ${key}` },
-        val,
+        key === "localtime" ? new Date(val).toLocaleString() : val,
       );
       el.appendChild(item);
     }

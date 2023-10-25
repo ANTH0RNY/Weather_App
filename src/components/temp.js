@@ -4,7 +4,7 @@ import {
   appendChildren,
 } from "../util.js";
 
-function itemScale(list = []) {
+function itemScale(list = [], clas = "") {
   /*
    * list should be a list of objects
    * The object should have value and unit
@@ -17,7 +17,7 @@ function itemScale(list = []) {
   const length = list.length;
 
   const wrap = createSetElement("div", {
-    class: "temp-wrapper",
+    class: `item-wrapper ${clas}`,
     "data-state": "0",
   });
   const num = createSetElement("p", {
