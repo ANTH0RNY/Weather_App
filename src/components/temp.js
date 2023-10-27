@@ -4,7 +4,7 @@ import {
   appendChildren,
 } from "../util.js";
 
-function itemScale(list = [], clas = "") {
+function itemScale(list = [], clas = "", title = "") {
   /*
    * list should be a list of objects
    * The object should have value and unit
@@ -20,20 +20,36 @@ function itemScale(list = [], clas = "") {
     class: `item-wrapper ${clas}`,
     "data-state": "0",
   });
+
+  const container = createSetElement("div", {
+    class: "item-container",
+  });
+
+  if (title.length > 0) {
+    const titleEl = createSetElement("div", {
+      class: "theTitle",
+    });
+    titleEl.innerHTML = title;
+    wrap.appendChild(titleEl);
+  }
+
   const num = createSetElement("p", {
     class: "temp-num",
   });
   const unit = createSetElement("p", {
     class: "temp-unit",
   });
-  const btn = createSetElement("btn", {
+  const btn = createSetElement("button", {
     class: "temp-btn",
   });
   /*Feeding default value*/
   num.innerText = defaultObject.value;
   unit.innerHTML = defaultObject.unit;
   btn.innerText = `change unit`;
-  appendChildren(wrap, [num, unit, btn]);
+  appendChildren(container, [num, unit]);
+
+  wrap.appendChild(container);
+  wrap.appendChild(btn);
 
   btn.addEventListener("click", (e) => {
     const currentState = parseInt(wrap.dataset.state);

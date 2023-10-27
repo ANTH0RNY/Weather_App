@@ -2,6 +2,7 @@ import createLocation from "./components/location";
 import itemScale from "./components/temp.js";
 import createCondition from "./components/condition.js";
 import "./sass/main.scss";
+import "./sass/current.scss";
 console.log("Hello world");
 
 function createUrl(location) {
@@ -42,7 +43,11 @@ btn.addEventListener("click", (e) => {
           },
         ];
         /*Temp scale*/
-        const tempScale = itemScale(temps, "temp-scale");
+        const tempScale = itemScale(
+          temps,
+          "temp-scale",
+          "<h3>Temperature</h3>",
+        );
         current.appendChild(tempScale);
         const condtionObject = { ...val.current.condition };
         const conditionElement = createCondition(condtionObject);
@@ -57,8 +62,54 @@ btn.addEventListener("click", (e) => {
             unit: `<span class="precip-unit">in</span>`,
           },
         ];
-        const precipScale = itemScale(precipVal);
+        const precipScale = itemScale(
+          precipVal,
+          "precip",
+          "<h3>Precipitation</h3>",
+        );
         current.appendChild(precipScale);
+        const feelsLike = [
+          {
+            value: val.current.feelslike_c,
+            unit: "<span>C</span><span>&#176;</span>",
+          },
+          {
+            value: val.current.feelslike_f,
+            unit: "<span>F</span><span>&#176;</span>",
+          },
+        ];
+        const feelsEl = itemScale(
+          feelsLike,
+          "feels-like",
+          "<h3>Feels like</h3>",
+        );
+        current.append(feelsEl);
+
+        const visData = [
+          {
+            value: val.current.vis_km,
+            unit: "<span>Km</span>",
+          },
+          {
+            value: val.current.vis_miles,
+            unit: "<span>Miles</span>",
+          },
+        ];
+        const visEl = itemScale(visData, "visibility", "<h3>Visibility</h3>");
+        current.appendChild(visEl);
+
+        const gustData = [
+          {
+            value: val.current.gust_kph,
+            unit: "<span>Km</span>",
+          },
+          {
+            value: val.current.gust_mph,
+            unit: "<span>Mph</span>",
+          },
+        ];
+        const gustEl = itemScale(gustData, "gust", "<h3>Gust</h3>");
+        current.appendChild(gustEl);
       }
     });
     input.value = "";
