@@ -19,9 +19,11 @@ body {
 .container {
   display: flex;
   height: 100vh;
+  overflow-y: hidden;
 
   .left {
-    flex: 1;
+    // flex: 1;
+    width: 25vw;
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
@@ -74,7 +76,18 @@ body {
   }
 
   .right {
-    flex: 3;
+    // flex: 3;
+    width: 75vw;
     padding-inline: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    // gap: 20rem;
+    .current{
+      flex: 1;
+    }
+    .forecast{
+      flex: 2;
+    }
   }
 }

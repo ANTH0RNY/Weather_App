@@ -3,6 +3,10 @@ import itemScale from "./components/temp.js";
 import createCondition from "./components/condition.js";
 import "./sass/main.scss";
 import "./sass/current.scss";
+import "./sass/forecast.scss";
+// import forecastItem from "./components/forecastItem";
+import mainForecast from "./components/forecastMain";
+
 console.log("Hello world");
 
 function createUrl(location) {
@@ -22,6 +26,8 @@ const btn = document.querySelector(".form-btn");
 const input = document.querySelector(".form-input");
 const location = document.querySelector(".location");
 const current = document.querySelector(".current");
+const foreCast = document.querySelector(".forecast");
+const windowWrapper = document.querySelector(".window-wrapper");
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -110,6 +116,11 @@ btn.addEventListener("click", (e) => {
         ];
         const gustEl = itemScale(gustData, "gust", "<h3>Gust</h3>");
         current.appendChild(gustEl);
+
+        // const forecastItemEl = forecastItem(val.forecast.forecastday[0].hour[0])
+        // foreCast.appendChild(forecastItemEl)
+        // console.log(forecastItemEl);
+        mainForecast(windowWrapper, val.forecast.forecastday[0].hour);
       }
     });
     input.value = "";
