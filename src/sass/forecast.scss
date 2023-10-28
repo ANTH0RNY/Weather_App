@@ -2,11 +2,26 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: rgba(211,211,211, .3);
+  border-radius: 2rem;
+  justify-content: end;
+  padding-bottom: 3rem;
   .nav{
     font-size: 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
+    background-color: none;
+    padding-top: 1rem;
+    &>*{
+      border: 1px solid black;
+      padding-inline: .4rem;
+      border-radius: .5rem;
+    }
+    &>*:hover{
+      background-color: rgba(220,220,220, .3);
+      cursor: pointer;
+    }
   }
   .window {
     overflow: hidden;

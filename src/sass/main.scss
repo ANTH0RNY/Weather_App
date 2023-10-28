@@ -6,7 +6,8 @@ body {
   box-sizing: content-box;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
-  background-image: url(../img/city.jpg);
+  // background-image: url(../img/city.jpg);
+  background-image: url(../img/rain.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -20,6 +21,7 @@ body {
   display: flex;
   height: 100vh;
   overflow-y: hidden;
+  background-color: rgba(47,79,79, .3);
 
   .left {
     // flex: 1;
@@ -50,12 +52,17 @@ body {
         // font-size: 1.2rem;
       }
       input{
-        // border: none;
         outline: none;
+        border: none;
+        border-left: 2px solid white;
+        border-bottom: 2px solid white;
         margin: 1rem 0;
         height: 1.5rem;
         width: 90%;
         font-size: 1.2rem;
+        background-color: rgba(47, 79, 79, .2);
+        color: white;
+        padding-left: .5rem;
       }
     }
     .location{

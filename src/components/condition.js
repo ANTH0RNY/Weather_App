@@ -20,7 +20,8 @@ function createCondition(obj) {
   );
   const iconImg = createSafeElement("img", {
     class: "image",
-    src: icon,
+    src: `http:${icon}`,
+    alt:"cloud condition"
   });
   appendChildren(wrapper, [iconImg, textDiv]);
 

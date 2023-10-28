@@ -38,6 +38,7 @@ btn.addEventListener("click", (e) => {
         createLocation(location, val.location);
 
         current.innerHTML = "";
+        current.innerHTML="<h3>Current Weather</h3>"
         const temps = [
           {
             value: val.current.temp_c,
